@@ -1,6 +1,12 @@
 package com.example.eventsservice.service;
 
+import com.example.eventsdata.entity.Event;
+import com.example.eventsservice.client.TicketmasterClient;
+import com.example.eventsservice.dto.EventDTO;
+import com.example.eventsservice.mapper.EventMapper;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class EventImportService {
@@ -16,10 +22,10 @@ public class EventImportService {
     }
 
     public void importEvents() {
-        List<EventDTO> events = ticketmasterClient.getEventsInPoland();
-        for (EventDTO eventDTO : events) {
-            Event event = eventMapper.toEntity(eventDTO);
-            eventService.createEvent(eventMapper.toDto(event));
-        }
+//        List<EventDTO> events = ticketmasterClient.getEventsInPoland();
+//        for (EventDTO eventDTO : events) {
+//            Event event = eventMapper.toEntity(eventDTO);
+//            eventService.createEvent(eventMapper.toDto(event));
+//        }
     }
 }

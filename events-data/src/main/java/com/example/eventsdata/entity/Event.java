@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,18 +22,18 @@ public class Event {
     private String date;
     private String ticketUrl;
 
-    @ManyToOne(fetch = FetchType.LAZY) // lub FetchType.EAGER
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE}) // lub FetchType.EAGER
     @JoinColumn(name = "venue_id") // Klucz obcy w tabeli `Event`
     private Venue venue;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinColumn(name = "genre_id")
     private Genre genre;
 
-    @OneToOne(mappedBy = "event", cascade = CascadeType.ALL)
-    private PriceRange priceRange;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<PriceRange> priceRange;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable(
             name = "event_attraction",
             joinColumns = @JoinColumn(name = "event_id"),

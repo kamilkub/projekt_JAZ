@@ -11,5 +11,4 @@ public class VenueDTO {
     private String city;
     private String address;
     private String country;
-
 }

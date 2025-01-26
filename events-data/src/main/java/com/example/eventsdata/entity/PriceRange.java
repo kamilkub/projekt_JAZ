@@ -12,11 +12,7 @@ public class PriceRange {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne
-    @JoinColumn(name = "event_id")
-    private Event event;
-
     private String currency;
-    private Double minPrice;
-    private Double maxPrice;
+    private Long minPrice;
+    private Long maxPrice;
 }
