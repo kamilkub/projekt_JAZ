@@ -1,5 +1,6 @@
 package com.example.eventsservice.client;
 
+import com.example.eventsdata.entity.PriceRange;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
@@ -28,6 +29,8 @@ class TicketmasterEvent {
 
     @JsonProperty("_embedded")
     private Embedded embedded;
+
+    private List<PriceRange> priceRanges;
 
     @Data
     @JsonIgnoreProperties(ignoreUnknown = true)
@@ -71,4 +74,12 @@ class TicketmasterEvent {
     public static class Genre {
         private String name;
     }
+
+    @Data
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class PriceRange {
+        private Long min;
+        private Long max;
+    }
+
 }
