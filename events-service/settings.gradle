@@ -1,0 +1,4 @@
+rootProject.name='events-service'
+
+include 'events-data'
+project(':events-data').projectDir = new File(settingsDir,'../events-data')
